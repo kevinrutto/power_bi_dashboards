@@ -1,0 +1,59 @@
+ALTER TABLE STAGING.SAVINGS_ACCOUNT
+ DROP PRIMARY KEY CASCADE;
+
+DROP TABLE STAGING.SAVINGS_ACCOUNT CASCADE CONSTRAINTS;
+
+CREATE TABLE STAGING.SAVINGS_ACCOUNT
+(
+  ACCOUNT_ID        NUMBER,
+  INTEREST_RATE     NUMBER(5,2),
+  BALANCE           NUMBER(12,2),
+  ACCRUED_INTEREST  NUMBER(15),
+  BALANCE_DT        DATE
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+MONITORING;
+
+
+--  There is no statement for index STAGING.SYS_C007673.
+--  The object is created when the parent object is created.
+
+ALTER TABLE STAGING.SAVINGS_ACCOUNT ADD (
+  PRIMARY KEY
+  (ACCOUNT_ID)
+  USING INDEX
+    TABLESPACE USERS
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MAXSIZE          UNLIMITED
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                PCTINCREASE      0
+                BUFFER_POOL      DEFAULT
+               )
+  ENABLE VALIDATE);
+
+ALTER TABLE STAGING.SAVINGS_ACCOUNT ADD (
+  FOREIGN KEY (ACCOUNT_ID) 
+  REFERENCES STAGING.ACCOUNT (ACCOUNT_ID)
+  ENABLE VALIDATE);
