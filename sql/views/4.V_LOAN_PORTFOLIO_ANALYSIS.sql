@@ -64,7 +64,7 @@ AS
              AS LOAN_AGE_YEARS,
           -- Risk metrics (collateral value sourced from COLLATERAL table)
           ROUND (
-             la.PRINCIPAL_BAL / NVL (col.COLLATERAL_VALUE, la.LOAN_AMOUNT),
+            (col.COLLATERAL_VALUE/ la.LOAN_AMOUNT),
              2)
              AS LOAN_TO_VALUE_RATIO,
           -- Interest calculations
