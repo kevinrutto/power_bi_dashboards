@@ -8,7 +8,7 @@
 
 This Power BI dashboard suite provides interactive banking analytics for **ACME Commercial Bank** (a fictional institution). The project demonstrates data visualization, financial analysis, and business intelligence techniques using **synthetic data**.
 <p>
-  <a href="https://app.powerbi.com/view?r=eyJrIjoiNTczZDdlOTgtMjZmNi00MDBiLTgzYWItOTJjNWVkODE2NDEyIiwidCI6IjRlYTFiNmIzLWUzZTItNGRmYi1hOGI3LWQ0MmRlNTlhNTVmZSIsImMiOjN9&pageName=5f04fb2ea6eb6d18b4a2" target="_blank">
+  <a href="https://app.powerbi.com/view?r=eyJrIjoiMDVlMDgzZmItNWM0MS00OWVhLTk2MjQtN2I5NzkwMjAxZjQ1IiwidCI6IjRlYTFiNmIzLWUzZTItNGRmYi1hOGI3LWQ0MmRlNTlhNTVmZSIsImMiOjN9&pageName=5f04fb2ea6eb6d18b4a2" target="_blank">
     <img src="https://img.shields.io/badge/View_on-PowerBI_Service-blue?logo=powerbi" alt="View on Power BI">
   </a>
 </p>
