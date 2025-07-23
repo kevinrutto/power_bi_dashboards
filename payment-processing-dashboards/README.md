@@ -42,6 +42,17 @@ This Power BI dashboard suite provides interactive banking analytics for **ACME 
 ### 1. Transaction Volume & Trends Analytics
 ![Transaction Volume](./images/1_transaction_trend_analytics.jpg)
 
+
+* **Total Transaction Volume (Year To Date):** Overall financial value of transactions.
+* **Number of Transactions:** Count of individual transactions.
+* **Average Transaction Amount:** Average value per transaction.
+* **Success Rate & Failure Rate:** Performance indicators for transaction processing.
+* **Transaction amounts by payment type:** Breakdown of transaction values by various payment types (e.g., International ACH, Prearranged Payment, Debit, Web Credit, Web Debit).
+* **Transaction amount trends over time:** Visualizes Credit and Debit transaction volumes from 2016 to 2025, highlighting year-over-year changes.
+* **Failure Reasons Breakdown by %:** Identifies the primary causes of transaction failures (e.g., System Error, Invalid Account, Insufficient Funds, Bank Rejected).
+* **Transactions by NACHA categories:** Categorizes transactions based on NACHA (National Automated Clearing House Association) standards (e.g., Consumer, International, Conversion, Business, Government, Return).
+* **Total amount by year:** Shows the total transaction amount (Credit and Debit) on a yearly basis from 2016 to 2025.
+
 **Time Intelligence Features:**
 - Dual-axis time series (2016-2025) with YoY growth callouts
 - Failure rate trendlines with 30-day moving average
@@ -53,7 +64,12 @@ This Power BI dashboard suite provides interactive banking analytics for **ACME 
 ### 2. Payment Type Analysis
 ![Payment Analysis](./images/2_payment_type_analysis.jpg)
 
-**ACH Time Patterns:**
+* **Transaction amounts by payment type** A pie chart illustrating the distribution of transaction amounts across different payment types.
+* **Top 10 payment types:** A table listing the top payment types by transaction amount.
+* **Bank payments by volume:** Shows transaction volumes categorized by country and specific banks within those countries.
+* **Payment transactions per success rate:** Tracks the success rate of Credit and Debit transactions over time (2016-2024).
+* **Transaction settlement rate in processing hours:** Displays the median settlement time for Credit and Debit transactions.
+* **Payment transactions by transaction codes** A treemap visualizing the distribution of payment transactions across various transaction codes (e.g., IAT, WEB_D, PPD_D).
 - IAT settlement time heatmap (by hour/day)
 - Payment type seasonality matrix
 - Bank processing speed trends (90-day rolling)
@@ -123,7 +139,7 @@ This dashboard offers a deeper dive into the distribution of debit/credit transa
 1. **Open the `.pbix` file** in [**Power BI Desktop**](https://powerbi.microsoft.com/desktop/) to explore or edit the report.
 2. Or, **view the published version online**:
 
-   🔗 [**View Dashboard on Power BI Service**](https://app.powerbi.com/view?r=eyJrIjoiNTczZDdlOTgtMjZmNi00MDBiLTgzYWItOTJjNWVkODE2NDEyIiwidCI6IjRlYTFiNmIzLWUzZTItNGRmYi1hOGI3LWQ0MmRlNTlhNTVmZSIsImMiOjN9&pageName=5f04fb2ea6eb6d18b4a2)
+   🔗 [**View Dashboard on Power BI Service**](https://app.powerbi.com/view?r=eyJrIjoiMDVlMDgzZmItNWM0MS00OWVhLTk2MjQtN2I5NzkwMjAxZjQ1IiwidCI6IjRlYTFiNmIzLWUzZTItNGRmYi1hOGI3LWQ0MmRlNTlhNTVmZSIsImMiOjN9&pageName=5f04fb2ea6eb6d18b4a2)
 
 2. Use the **tabs** to navigate between dashboards
 3. Apply **slicers** to filter by branch, product, date range, and more
@@ -147,7 +163,6 @@ This dashboard offers a deeper dive into the distribution of debit/credit transa
 - 🔗 Integrate with live banking APIs
 - 🤖 Add machine learning for predictive analytics
 - 📈 Expand with customer lifetime value modeling
-- 🏦 Add transaction analysis value modeling
 
 ---
 
