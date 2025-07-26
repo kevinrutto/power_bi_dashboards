@@ -1,0 +1,72 @@
+DROP VIEW STAGING.V_ACH_PAYMENT_TRENDS;
+
+/* Formatted on 7/25/2025 10:35:52 PM (QP5 v5.287) */
+CREATE OR REPLACE FORCE VIEW STAGING.V_ACH_PAYMENT_TRENDS
+(
+   ARCH_TRANSACTION_ID,
+   RELATED_TRANSACTION_ID,
+   CUSTOMER_ID,
+   ACCOUNT_ID,
+   TRANSACTION_DATE,
+   SETTLEMENT_DATE,
+   AMOUNT,
+   TRANSACTION_TYPE,
+   TRANSACTION_ROLE,
+   STATUS,
+   STATUS_REASON,
+   BATCH_ID,
+   REFERENCE_NUMBER,
+   ORIGINATING_COMPANY,
+   TRANSACTION_CODE,
+   DR_CR_IND,
+   NAME,
+   ACCOUNT_NUMBER,
+   BRANCH_NAME,
+   LOCATION,
+   TRANSACTION_NAME,
+   DESCRIPTION,
+   NACHA_STANDARD_ENTRY_CLASS,
+   TRANSACTION_CATEGORY,
+   COUNTRY_OF_ORIGIN
+)
+   BEQUEATH DEFINER
+AS
+   SELECT DISTINCT
+          ach."ARCH_TRANSACTION_ID",
+          ach."RELATED_TRANSACTION_ID",
+          ach."CUSTOMER_ID",
+          ach."ACCOUNT_ID",
+          ach."TRANSACTION_DATE",
+          ach."SETTLEMENT_DATE",
+          ach."AMOUNT",
+          ach."TRANSACTION_TYPE",
+          ach."TRANSACTION_ROLE",
+          ach."STATUS",
+          ach."STATUS_REASON",
+          ach."BATCH_ID",
+          ach."REFERENCE_NUMBER",
+          ach."ORIGINATING_COMPANY",
+          ach."TRANSACTION_CODE",
+          CASE WHEN ach."DR_CR_IND" = 'DEBIT' THEN 'Debit' ELSE 'Credit' END
+             AS "DR_CR_IND",
+          c.NAME,
+          a.ACCOUNT_NUMBER,
+          b.BRANCH_NAME,
+          b.LOCATION,
+          atc.TRANSACTION_NAME,
+          atc.DESCRIPTION,
+          atc.NACHA_STANDARD_ENTRY_CLASS,
+          atc.TRANSACTION_CATEGORY,
+          c.country_name AS COUNTRY_OF_ORIGIN
+     FROM ACH_TRANSACTIONS ACH,
+          CUSTOMER C,
+          ACCOUNT A,
+          BRANCH B,
+          ACH_TRANSACTION_CODE ATC,
+          country c
+    WHERE     ACH.CUSTOMER_ID = C.CUSTOMER_ID
+          AND ACH.ACCOUNT_ID = A.ACCOUNT_ID
+          AND C.CUSTOMER_ID = A.CUSTOMER_ID
+          AND C.BRANCH_ID = B.BRANCH_ID
+          AND c.country_code = ach.country_of_origin
+          AND atc.TRANSACTION_CODE = ach.TRANSACTION_CODE;
